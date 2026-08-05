@@ -15,3 +15,14 @@ NetAcad, Richtung CCST/CCNA) lerne – DNS, DHCP, Linux-Kommandozeile, Docker.
 Docker installieren:
 ```bash
 curl -sSL https://get.docker.com | sh
+
+Launch it 
+sudo docker run -d \
+  --name pihole \
+  --network host \
+  -e TZ="Europe/Vienna" \
+  -e WEBPASSWORD="***" \
+  -v /etc/pihole:/etc/pihole \
+  -v /etc/dnsmasq.d:/etc/dnsmasq.d \
+  --restart=unless-stopped \
+  pihole/pihole:latest
